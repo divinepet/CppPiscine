@@ -6,17 +6,14 @@ ClapTrap::ClapTrap(const string name) : name(YELLOW + name + RESET), health(10),
 
 void ClapTrap::attack(const string &target) {
     cout << name + " attacks " + target + " on " << attackDmg << "\n";
-    energy -= 2;
 }
 
 void ClapTrap::takeDamage(unsigned int amount) {
     cout << name + " damaged on " << amount << "\n";
-    health -= amount;
 }
 
 void ClapTrap::beRepaired(unsigned int amount) {
     cout << name + " healed on " << amount << "\n";
-    health += amount;
 }
 
 ClapTrap::~ClapTrap() {

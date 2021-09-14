@@ -9,17 +9,14 @@ FragTrap::FragTrap(string name) : ClapTrap(PINK + name + RESET) {
 
 void FragTrap::attack(const string &target) {
 	cout << name + " smash the head of " + target + " and took " << attackDmg << "\n";
-	energy -= 2;
 }
 
 void FragTrap::takeDamage(unsigned int amount) {
 	cout << name + " got a " << amount << " damage. This is nothing for this trap...\n";
-	health -= amount;
 }
 
 void FragTrap::beRepaired(unsigned int amount) {
 	cout << name + " got a health on " << amount << " amount\n";
-	health += amount;
 }
 
 void FragTrap::highFivesGuys() {

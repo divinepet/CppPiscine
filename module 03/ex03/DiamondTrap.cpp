@@ -14,12 +14,10 @@ void DiamondTrap::attack(const string &target) {
 
 void DiamondTrap::takeDamage(unsigned int amount) {
 	cout << name + " was scratched on " << amount << "\n";
-	health -= amount;
 }
 
 void DiamondTrap::beRepaired(unsigned int amount) {
 	cout << name + " took the cure on " << amount << "\n";
-	health += amount;
 }
 
 void DiamondTrap::whoAmI() {

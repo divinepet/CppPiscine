@@ -9,17 +9,14 @@ ScavTrap::ScavTrap(string name) : ClapTrap(BLUE + name + RESET) {
 
 void ScavTrap::attack(const string &target) {
 	cout << name + " damages the " + target + " on " << attackDmg << "\n";
-	energy -= 2;
 }
 
 void ScavTrap::takeDamage(unsigned int amount) {
 	cout << name + " taken " << amount << " damage from someone...\n";
-	health -= amount;
 }
 
 void ScavTrap::beRepaired(unsigned int amount) {
 	cout << name + " boost his health on " << amount << "\n";
-	health += amount;
 }
 
 void ScavTrap::guardGate() {
