@@ -22,3 +22,6 @@ Animal& Animal::operator= (Animal const &animal) {
 	return *this;
 }
 
+std::ostream &operator<<(std::ostream &out, Animal const &other) {
+	return out << other.getType();
+}

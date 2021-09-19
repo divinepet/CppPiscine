@@ -18,3 +18,5 @@ public:
 	virtual void makeSound() const = 0;
 };
 
+std::ostream &operator<<(std::ostream &out, Animal const &other);
+

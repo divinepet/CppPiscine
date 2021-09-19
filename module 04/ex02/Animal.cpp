@@ -9,9 +9,9 @@ Animal::~Animal() {
 	cout << "Parent class was destroyed" << endl;
 }
 
-//string Animal::getType() const {
-//	return type;
-//}
+string Animal::getType() const {
+	return type;
+}
 
 Animal::Animal(Animal const &animal) : type(animal.type) {}
 
@@ -22,3 +22,6 @@ Animal& Animal::operator= (Animal const &animal) {
 	return *this;
 }
 
+std::ostream &operator<<(std::ostream &out, Animal const &other) {
+	return out << other.getType();
+}

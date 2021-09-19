@@ -1,17 +1,18 @@
 #pragma once
 
-#include <iostream>
 #include "Animal.hpp"
-
-using std::string;
-using std::cout;
-
 
 class Cat : public Animal {
 public:
 	Cat();
+	Cat(const Cat &obj);
 	virtual ~Cat();
+
+	Cat &operator=(Cat const &other);
+
 	virtual string getType() const;
 	virtual void makeSound() const;
 };
+
+std::ostream &operator<<(std::ostream &out, Cat const &other);
 

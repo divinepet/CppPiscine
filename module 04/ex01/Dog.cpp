@@ -38,3 +38,7 @@ Dog& Dog::operator= (const Dog &dog) {
 		brain = nullptr;
 	return *this;
 }
+
+std::ostream &operator<<(std::ostream &out, Dog const &other) {
+	return out << other.getType();
+}

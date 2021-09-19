@@ -65,3 +65,7 @@ void Character::freeArray() {
 		delete inventory[i];
 	delete[] inventory;
 }
+
+std::ostream &operator<<(std::ostream &out, Character const &other) {
+	return out << other.getName();
+}

@@ -1,18 +1,17 @@
 #pragma once
 
-#include <iostream>
 #include "AMateria.hpp"
-
-using std::string;
-using std::cout;
-using std::endl;
-
 
 class Cure : public AMateria {
 public:
 	Cure();
+	Cure(const Cure &obj);
 	virtual ~Cure();
+
+	Cure &operator=(Cure const &other);
+
 	virtual AMateria* clone() const;
 	virtual void use(ICharacter &target);
 };
 
+std::ostream &operator<<(std::ostream &out, Cure const &other);

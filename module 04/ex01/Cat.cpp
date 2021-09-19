@@ -38,3 +38,7 @@ Cat& Cat::operator= (const Cat &cat) {
 		brain = nullptr;
 	return *this;
 }
+
+std::ostream &operator<<(std::ostream &out, Cat const &other) {
+	return out << other.getType();
+}

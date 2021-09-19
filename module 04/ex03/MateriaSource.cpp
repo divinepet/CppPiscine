@@ -30,3 +30,8 @@ AMateria *MateriaSource::createMateria(const string &type) {
 	}
 	return nullptr;
 }
+
+MateriaSource &MateriaSource::operator=(MateriaSource const &other) {
+	localStorage = other.localStorage;
+	return (*this);
+}

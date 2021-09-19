@@ -1,5 +1,3 @@
-#include <iostream>
-#include "Animal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
 const string BLUE = "\x1B[3;1;44;30m\t";
