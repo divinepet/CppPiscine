@@ -1,4 +1,3 @@
-#include <iostream>
 #include "Fixed.hpp"
 
 std::ostream& operator<<(std::ostream& out, const Fixed &fixed) {

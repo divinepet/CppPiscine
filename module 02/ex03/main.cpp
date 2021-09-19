@@ -1,4 +1,3 @@
-#include <iostream>
 #include "Point.hpp"
 
 int main() {
@@ -8,7 +7,7 @@ int main() {
     Point const d(4.33f, 4.0f);
 
     bool answer = bsp(a, b, c, d);
-    (answer) ? cout << "Point is inside a triangle" :
-                cout << "Point is outside a triangle";
+    (answer) ? cout << "Point is inside a triangle" << std::endl:
+                cout << "Point is outside a triangle" << std::endl;
     return 0;
 }
