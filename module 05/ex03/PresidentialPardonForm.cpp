@@ -4,8 +4,13 @@ PresidentialPardonForm::PresidentialPardonForm() {}
 
 PresidentialPardonForm::~PresidentialPardonForm() {}
 
-PresidentialPardonForm::PresidentialPardonForm(const string &target) :
-	Form("PresidentialPardonForm", 25, 5), target(target) {}
+
+PresidentialPardonForm::PresidentialPardonForm(const string &target)
+: Form("PresidentialPardonForm", 25, 5), target(target) {}
+
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &obj) : Form(obj) {
+	this->target = obj.target;
+}
 
 void PresidentialPardonForm::execute(Bureaucrat const & executor) const {
 	Form::execute(executor);

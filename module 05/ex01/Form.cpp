@@ -6,13 +6,20 @@ Form::Form(const string &name, unsigned int gradeToSign, unsigned int gradeToExe
 	this->name = name;
 	this->sign = false;
 	if (gradeToSign < 1 || gradeToExecute < 1)
-		throw GradeTooHighException();
+		throw Bureaucrat::GradeTooHighException();
 	else if (gradeToSign > 150 || gradeToExecute > 150)
-		throw GradeTooLowException();
+		throw Bureaucrat::GradeTooLowException();
 	else {
 		this->gradeToSign = gradeToSign;
 		this->gradeToExecute = gradeToExecute;
 	}
+}
+
+Form::Form(const Form &obj) {
+	this->name = obj.name;
+	this->sign = obj.sign;
+	this->gradeToSign = obj.gradeToSign;
+	this->gradeToExecute = obj.gradeToExecute;
 }
 
 Form::~Form() {}
@@ -24,7 +31,7 @@ void Form::beSigned(Bureaucrat &bureaucrat) {
 	} else {
 		this->sign = false;
 		cout << bureaucrat.signForm(sign, name);
-		throw GradeTooLowException();
+		throw Bureaucrat::GradeTooLowException();
 	}
 }
 
@@ -50,7 +57,3 @@ std::ostream &operator<<(std::ostream &out, Form const &other) {
 	<< "), grades-to-execute(" << other.getGradeToExecute()
 	<< "), status: " << other.getSign();
 }
-
-const char* Form::GradeTooHighException::what() const throw() { return "Error: Grade too high"; }
-
-const char* Form::GradeTooLowException::what() const throw() { return "Error: Grade too low"; }

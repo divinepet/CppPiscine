@@ -1,7 +1,6 @@
 #pragma once
 
 #include <iostream>
-
 class Form;
 #include "Bureaucrat.hpp"
 using std::string;
@@ -17,16 +16,17 @@ protected:
 	Form();
 public:
 	Form(const string &name, unsigned int gradeToSign, unsigned int gradeToExecute);
+	Form(const Form &obj);
 	virtual ~Form();
+
 	Form &operator=(Form const &other);
+
 	const string &getName() const;
 	bool getSign() const;
 	unsigned int getGradeToSign() const;
 	unsigned int getGradeToExecute() const;
 	virtual void beSigned(Bureaucrat const &bureaucrat);
 	virtual void execute(Bureaucrat const &executor) const = 0;
-	class GradeTooHighException: public std::exception { virtual const char* what() const throw(); };
-	class GradeTooLowException: public std::exception { virtual const char* what() const throw(); };
 	class UnsignedFormException: public std::exception { virtual const char* what() const throw(); };
 	class UnknownFormException: public std::exception { virtual const char* what() const throw(); };
 };

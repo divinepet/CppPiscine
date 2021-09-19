@@ -1,4 +1,3 @@
-#include <iostream>
 #include "Bureaucrat.hpp"
 const string CYAN = "\x1B[3;96m\n\t\t";
 const string RESET = "\033[0m";

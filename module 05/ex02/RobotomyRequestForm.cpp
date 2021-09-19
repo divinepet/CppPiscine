@@ -4,8 +4,12 @@ RobotomyRequestForm::RobotomyRequestForm() {}
 
 RobotomyRequestForm::~RobotomyRequestForm() {}
 
-RobotomyRequestForm::RobotomyRequestForm(const string &target) :
-	Form("RobotomyRequestForm", 72, 45), target(target) {}
+RobotomyRequestForm::RobotomyRequestForm(const string &target)
+: Form("RobotomyRequestForm", 72, 45), target(target) {}
+
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &obj) : Form(obj) {
+	this->target = obj.target;
+}
 
 void RobotomyRequestForm::execute(Bureaucrat const & executor) const {
 	Form::execute(executor);

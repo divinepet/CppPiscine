@@ -1,6 +1,5 @@
 #pragma once
 
-#include <iostream>
 class Bureaucrat;
 #include "Form.hpp"
 using std::string;
@@ -13,8 +12,11 @@ class Bureaucrat {
 	unsigned int grade;
 public:
 	Bureaucrat(const string &name, unsigned int grade);
+	Bureaucrat(const Bureaucrat &obj);
 	virtual ~Bureaucrat();
+
 	Bureaucrat &operator=(Bureaucrat const &other);
+
 	const string &getName() const;
 	unsigned int getGrade() const;
 	void gradeUp();

@@ -4,10 +4,19 @@ ShrubberyCreationForm::ShrubberyCreationForm() {}
 
 ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
-ShrubberyCreationForm::ShrubberyCreationForm(const string &target) :
-	Form("ShrubberyCreationForm", 145, 137), target(target) {}
+ShrubberyCreationForm::ShrubberyCreationForm(const string &target)
+: Form("ShrubberyCreationForm", 145, 137), target(target) {}
+
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &obj) : Form(obj) {
+	this->target = obj.target;
+}
+
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &obj) : Form(obj) {
+	this->target = obj.target;
+}
 
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
+	Form::execute(executor);
 	std::ofstream file;
 
 	file.open(target + "_shrubbery");

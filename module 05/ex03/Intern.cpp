@@ -14,7 +14,3 @@ Form* Intern::makeForm(const string &name, const string &target) {
 	}
 	throw Form::UnknownFormException();
 }
-
-Intern &Intern::operator=(Intern const &other) { return (*this); }
-
-std::ostream &operator<<(std::ostream &out, Intern const &other) { return out << "some Intern"; }

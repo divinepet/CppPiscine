@@ -1,5 +1,11 @@
 #include "Bureaucrat.hpp"
 
+Bureaucrat::Bureaucrat() {}
+
+Bureaucrat::~Bureaucrat() {}
+
+Bureaucrat::Bureaucrat(const Bureaucrat &obj) : name(obj.name), grade(obj.grade) {}
+
 Bureaucrat::Bureaucrat(const string &name, unsigned int grade) : name(name), grade(grade) {
 	if (grade < 1)
 		throw GradeTooHighException();
@@ -22,10 +28,6 @@ void Bureaucrat::executeForm(const Form &form) {
 	else if (grade > form.getGradeToExecute())
 		cout << "grade is too low for execute this form!" << endl;
 }
-
-Bureaucrat::Bureaucrat() {}
-
-Bureaucrat::~Bureaucrat() {}
 
 const string &Bureaucrat::getName() const { return name; }
 

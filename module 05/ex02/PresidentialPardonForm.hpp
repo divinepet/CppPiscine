@@ -1,21 +1,18 @@
 #pragma once
 
-#include <iostream>
 #include "Form.hpp"
-
-using std::string;
-using std::cout;
-using std::endl;
 
 class PresidentialPardonForm : public Form {
 	string target;
 	PresidentialPardonForm();
 public:
 	PresidentialPardonForm(const string& target);
+	PresidentialPardonForm(const PresidentialPardonForm &obj);
 	virtual ~PresidentialPardonForm();
-	virtual void execute(Bureaucrat const & executor) const;
+
 	PresidentialPardonForm &operator=(PresidentialPardonForm const &other);
 
+	virtual void execute(Bureaucrat const & executor) const;
 	const string &getTarget() const;
 };
 

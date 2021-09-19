@@ -1,5 +1,5 @@
 CC=clang++
-CFLAGS=-std=c++98 -c #-Wall -Werror -Wextra
+CFLAGS=-std=c++98 -c -Wall -Werror -Wextra
 SOURCES=$(wildcard *.cpp)
 OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=app

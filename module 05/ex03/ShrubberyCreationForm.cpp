@@ -8,6 +8,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(const string &target) :
 	Form("ShrubberyCreationForm", 145, 137), target(target) {}
 
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
+	Form::execute(executor);
 	std::ofstream file;
 
 	file.open(target + "_shrubbery");

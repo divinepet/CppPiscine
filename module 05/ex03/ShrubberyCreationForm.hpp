@@ -13,10 +13,12 @@ class ShrubberyCreationForm : public Form {
 	ShrubberyCreationForm();
 public:
 	ShrubberyCreationForm(const string& target);
+	ShrubberyCreationForm(const ShrubberyCreationForm &obj);
 	virtual ~ShrubberyCreationForm();
-	virtual void execute(Bureaucrat const & executor) const;
+
 	ShrubberyCreationForm &operator=(ShrubberyCreationForm const &other);
 
+	virtual void execute(Bureaucrat const & executor) const;
 	const string &getTarget() const;
 };
 

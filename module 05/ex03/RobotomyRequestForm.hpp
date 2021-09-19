@@ -1,21 +1,18 @@
 #pragma once
 
-#include <iostream>
 #include "Form.hpp"
-
-using std::string;
-using std::cout;
-using std::endl;
 
 class RobotomyRequestForm : public Form {
 	string target;
 	RobotomyRequestForm();
 public:
 	RobotomyRequestForm(const string& target);
+	RobotomyRequestForm(const RobotomyRequestForm &obj);
 	virtual ~RobotomyRequestForm();
-	virtual void execute(Bureaucrat const & executor) const;
+
 	RobotomyRequestForm &operator=(RobotomyRequestForm const &other);
 
+	virtual void execute(Bureaucrat const & executor) const;
 	const string &getTarget() const;
 };
 

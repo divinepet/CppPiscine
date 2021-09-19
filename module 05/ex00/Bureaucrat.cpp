@@ -11,6 +11,8 @@ Bureaucrat::Bureaucrat() {}
 
 Bureaucrat::~Bureaucrat() {}
 
+Bureaucrat::Bureaucrat(const Bureaucrat &obj) : name(obj.name), grade(obj.grade) {}
+
 const string &Bureaucrat::getName() const { return name; }
 
 unsigned int Bureaucrat::getGrade() const { return grade; }
