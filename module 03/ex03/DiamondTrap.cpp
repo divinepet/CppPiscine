@@ -8,6 +8,10 @@ DiamondTrap::DiamondTrap(string name) : ClapTrap(name + "_clap_name"), FragTrap(
 	attackDmg = FragTrap::attackDmg;
 }
 
+DiamondTrap::~DiamondTrap() {}
+
+DiamondTrap::DiamondTrap(const DiamondTrap &obj) : ClapTrap(obj), FragTrap(obj), ScavTrap(obj) {}
+
 void DiamondTrap::attack(const string &target) {
 	ScavTrap::attack(target);
 }
@@ -22,4 +26,12 @@ void DiamondTrap::beRepaired(unsigned int amount) {
 
 void DiamondTrap::whoAmI() {
 	cout << "My name is " + this->name << " and my ClapTrapName is " + ClapTrap::name + "\n";
+}
+
+DiamondTrap &DiamondTrap::operator=(DiamondTrap const &other) {
+	name = other.name;
+	health = other.health;
+	energy = other.energy;
+	attackDmg = other.attackDmg;
+	return (*this);
 }

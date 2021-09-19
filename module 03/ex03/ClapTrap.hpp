@@ -18,9 +18,13 @@ protected:
     int attackDmg;
 public:
     ClapTrap(const string &name);
+    ClapTrap(const ClapTrap &obj);
+    virtual ~ClapTrap();
+
+    ClapTrap &operator=(ClapTrap const &other);
+
 	virtual void attack(string const & target);
 	virtual void takeDamage(unsigned int amount);
 	virtual void beRepaired(unsigned int amount);
-    virtual ~ClapTrap();
 };
 

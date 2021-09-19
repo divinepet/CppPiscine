@@ -7,6 +7,8 @@ ScavTrap::ScavTrap(string name) : ClapTrap(BLUE + name + RESET) {
 	attackDmg = 20;
 }
 
+ScavTrap::ScavTrap(const ScavTrap &obj) : ClapTrap(obj) {}
+
 void ScavTrap::attack(const string &target) {
 	cout << name + " damages the " + target + " on " << attackDmg << "\n";
 }
@@ -25,4 +27,12 @@ void ScavTrap::guardGate() {
 
 ScavTrap::~ScavTrap() {
 	cout << name + ": my ScavTrap shell degrades...\n";
+}
+
+ScavTrap &ScavTrap::operator=(ScavTrap const &other) {
+	name = other.name;
+	health = other.health;
+	energy = other.energy;
+	attackDmg = other.attackDmg;
+	return (*this);
 }

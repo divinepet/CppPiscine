@@ -7,6 +7,8 @@ FragTrap::FragTrap(string name) : ClapTrap(PINK + name + RESET) {
 	attackDmg = 30;
 }
 
+FragTrap::FragTrap(const FragTrap &obj) : ClapTrap(obj) {}
+
 void FragTrap::attack(const string &target) {
 	cout << name + " smash the head of " + target + " and took " << attackDmg << "\n";
 }
@@ -25,4 +27,12 @@ void FragTrap::highFivesGuys() {
 
 FragTrap::~FragTrap() {
 	cout << name + ": this is my end!\n";
+}
+
+FragTrap &FragTrap::operator=(FragTrap const &other) {
+	name = other.name;
+	health = other.health;
+	energy = other.energy;
+	attackDmg = other.attackDmg;
+	return (*this);
 }

@@ -16,9 +16,13 @@ protected:
     int attackDmg;
 public:
     ClapTrap(const string name);
+    ClapTrap(const ClapTrap &obj);
+    ~ClapTrap();
+
+    ClapTrap &operator=(ClapTrap const &other);
+
 	void attack(string const & target);
 	void takeDamage(unsigned int amount);
 	void beRepaired(unsigned int amount);
-    ~ClapTrap();
 };
 
