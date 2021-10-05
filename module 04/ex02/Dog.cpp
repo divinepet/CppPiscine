@@ -20,23 +20,18 @@ void Dog::makeSound() const {
 }
 
 Dog::Dog(const Dog &dog) {
-	cout << "Not basic dog's copy constructor called" << endl;
-	if (dog.brain)
-		brain = new Brain();
-	else
-		brain = nullptr;
+    cout << "Not basic dog's copy constructor called" << endl;
+    brain = new Brain();
+    brain = dog.brain;
 }
 
 Dog& Dog::operator= (const Dog &dog) {
-	cout << "Not basic dog's assign operator overload called" << endl;
-	if (this == &dog)
-		return *this;
-	delete brain;
-	if (dog.brain)
-		brain = new Brain();
-	else
-		brain = nullptr;
-	return *this;
+    cout << "Not basic dog's assign operator overload called" << endl;
+    if (this == &dog)
+        return *this;
+    brain = new Brain();
+    brain = dog.brain;
+    return *this;
 }
 
 std::ostream &operator<<(std::ostream &out, Dog const &other) {

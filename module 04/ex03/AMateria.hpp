@@ -1,26 +1,23 @@
 #pragma once
 
+#include <string>
 #include <iostream>
 #include "ICharacter.hpp"
-#include "MateriaSource.hpp"
 
-using std::string;
-using std::cout;
-using std::endl;
+class ICharacter;
 
 class AMateria {
 protected:
-	string type;
+    AMateria();
+    std::string type;
 public:
-	AMateria(const string & type);
-	AMateria(const AMateria &obj);
-	virtual ~AMateria();
+    AMateria(std::string const &type);
+    virtual ~AMateria();
+    AMateria(AMateria const &other);
+    AMateria & operator=(AMateria const &other);
 
-	AMateria &operator=(AMateria const &other);
-
-	string const & getType() const;
-	virtual AMateria* clone() const = 0;
-	virtual void use(ICharacter& target);
+    std::string const & getType() const;
+    virtual AMateria* clone() const = 0;
+    virtual void use(ICharacter& target);
 };
 
-std::ostream &operator<<(std::ostream &out, AMateria const &other);

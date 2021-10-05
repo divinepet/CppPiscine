@@ -1,71 +1,67 @@
 #include "Character.hpp"
 
-Character::Character(string const &name) {
-	Character::name = name;
-	inventory = new AMateria*[4];
+Character::Character(std::string name) : name(name) {
+    for (std::size_t i = 0; i < 4; i++) {
+    	this->container[i] = NULL;
+    }
 }
 
 Character::~Character() {
-	freeArray();
+    for (size_t i = 0; i < 4; i++) {
+    	if (container[i])
+    		delete container[i];
+    }
 }
 
-Character& Character::operator=(const Character & source) {
-	if (this == &source)
-		return *this;
-	freeArray();
-	if (source.inventory != nullptr) {
-		inventory = new AMateria*[4];
-		for (int i = 0; i < 4; ++i)
-			inventory[i] = source.inventory[i];
-	}
-	else
-		inventory = nullptr;
-	return *this;
+Character::Character(const Character &other) {
+    this->name = other.name;
+    for (size_t i = 0; i < 4; i++) {
+    	container[i] = other.container[i]->clone();
+    }
 }
 
-Character::Character(const Character& source) {
-	if (source.inventory != nullptr) {
-		inventory = new AMateria*[4];
-		for (int i = 0; i < 4; ++i)
-			inventory[i] = source.inventory[i];
-	}
-	else
-		inventory = nullptr;
+Character &Character::operator=(const Character &other) {
+    if (this == &other)
+        return (*this);
+    for (size_t i = 0; i < 4; i++) {
+    	if (container[i])
+    		delete container[i];
+    	if (other.container[i])
+    		container[i] = other.container[i]->clone();
+    }
+    return (*this);
 }
 
-string const &Character::getName() const {
-	return name;
+const std::string &Character::getName() const {
+    return name;
 }
 
 void Character::equip(AMateria *m) {
-	for (int i = 0; i < 4; ++i) {
-		if (inventory[i] == nullptr) {
-			inventory[i] = m;
-			return;
-		}
-	}
+    for (size_t i = 0; i < 4; i++) {
+    	if (this->container[i] == m) {
+            std::cout << this->name << " already has " << m->getType() + "\n";
+            return;
+        }
+    }
+    for (size_t i = 0; i < 4; i++) {
+    	if (!this->container[i]) {
+    		container[i] = m;
+            std::cout << this->name << " has taken " << m->getType() + "\n";
+            return;
+        }
+    }
 }
 
 void Character::unequip(int idx) {
-	if (idx >= 0 && idx < 4 && inventory[idx] != nullptr) {
-		inventory[idx] = nullptr;
-		return;
-	}
+	if (this->container[idx]) {
+		this->container[idx] = NULL;
+        return;
+    }
 }
 
 void Character::use(int idx, ICharacter &target) {
-	if (idx >= 0 && idx < 4 && inventory[idx] != nullptr) {
-		inventory[idx]->use(target);
-		return;
-	}
-}
-
-void Character::freeArray() {
-	for (int i = 0; i < 4; ++i)
-		delete inventory[i];
-	delete[] inventory;
-}
-
-std::ostream &operator<<(std::ostream &out, Character const &other) {
-	return out << other.getName();
+	if (this->container[idx]) {
+		this->container[idx]->use(target);
+        return;
+    }
 }

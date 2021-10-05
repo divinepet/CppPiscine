@@ -20,23 +20,18 @@ void Cat::makeSound() const {
 }
 
 Cat::Cat(const Cat &cat) {
-	cout << "Not basic cat's copy constructor called" << endl;
-	if (cat.brain)
-		brain = new Brain();
-	else
-		brain = nullptr;
+    cout << "Not basic cat's copy constructor called" << endl;
+    brain = new Brain();
+    brain = cat.brain;
 }
 
 Cat& Cat::operator= (const Cat &cat) {
-	cout << "Not basic cat's assign operator overload called" << endl;
-	if (this == &cat)
-		return *this;
-	delete brain;
-	if (cat.brain)
-		brain = new Brain();
-	else
-		brain = nullptr;
-	return *this;
+    cout << "Not basic cat's assign operator overload called" << endl;
+    if (this == &cat)
+        return *this;
+    brain = new Brain();
+    brain = cat.brain;
+    return *this;
 }
 
 std::ostream &operator<<(std::ostream &out, Cat const &other) {

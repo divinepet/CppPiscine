@@ -4,21 +4,23 @@ Cure::Cure() : AMateria("cure") {}
 
 Cure::~Cure() {}
 
-Cure::Cure(const Cure &obj) : AMateria(obj) {}
+Cure::Cure(const Cure &other) {
+	*this = other;
+}
 
-Cure &Cure::operator=(Cure const &other) {
-	type = other.getType();
-	return (*this);
+Cure &Cure::operator=(const Cure &other) {
+    if (this == &other)
+        return (*this);
+    this->type = other.type;
+    return (*this);
 }
 
 AMateria *Cure::clone() const {
-	return new Cure();
+    Cure *tmp = new Cure();
+    *tmp = *this;
+    return (tmp);
 }
 
 void Cure::use(ICharacter &target) {
-	cout << "* heals " + target.getName() + "’s wounds *" << endl;
-}
-
-std::ostream &operator<<(std::ostream &out, Cure const &other) {
-	return out << other.getType();
+    std::cout << "* heals " << target.getName() << "'s wounds *\n";
 }

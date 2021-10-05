@@ -1,17 +1,17 @@
 #pragma once
 
-#include "IMateriaSource.hpp"
+#include <string>
 #include "AMateria.hpp"
+#include "IMateriaSource.hpp"
 
 class MateriaSource : public IMateriaSource {
-	AMateria **localStorage;
+    AMateria *container[4];
 public:
-	MateriaSource();
-	virtual ~MateriaSource();
+    MateriaSource();
+    ~MateriaSource();
+    MateriaSource(MateriaSource const &other);
+    MateriaSource & operator=(MateriaSource const &other);
 
-	MateriaSource &operator=(MateriaSource const &other);
-
-	virtual void learnMateria(AMateria* m);
-	virtual AMateria* createMateria(std::string const & type);
+    void learnMateria(AMateria* materia);
+    AMateria* createMateria(std::string const &type);
 };
-

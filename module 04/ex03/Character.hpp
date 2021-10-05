@@ -1,23 +1,20 @@
 #pragma once
 
+#include <string>
 #include "ICharacter.hpp"
-#include "AMateria.hpp"
 
 class Character : public ICharacter {
-	string name;
-	AMateria **inventory;
-	void freeArray();
+    Character() {};
+    AMateria *container[4];
+    std::string name;
 public:
-	Character(string const &name);
-	Character(const Character& source);
-	virtual ~Character();
+    Character(std::string name);
+    ~Character();
+    Character(Character const &other);
+    Character & operator=(Character const &other);
 
-	Character& operator=(const Character &source);
-
-	virtual string const& getName() const;
-	virtual void equip(AMateria* m);
-	virtual void unequip(int idx);
-	virtual void use(int idx, ICharacter& target);
+    std::string const &getName() const;
+    void equip(AMateria* m);
+    void unequip(int idx);
+    void use(int idx, ICharacter& target);
 };
-
-std::ostream &operator<<(std::ostream &out, Character const &other);

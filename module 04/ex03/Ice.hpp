@@ -1,18 +1,15 @@
 #pragma once
 
 #include "AMateria.hpp"
+#include "ICharacter.hpp"
 
-class Ice : public AMateria {
+class Ice : virtual public AMateria {
 public:
-	Ice();
-	Ice(const Ice &obj);
-	virtual ~Ice();
+    Ice();
+    ~Ice();
+    Ice(Ice const &other);
+    Ice & operator=(Ice const &other);
 
-	Ice &operator=(Ice const &other);
-
-	AMateria* clone() const;
-	void use(ICharacter &target);
+    AMateria* clone() const;
+    void use(ICharacter& target);
 };
-
-std::ostream &operator<<(std::ostream &out, Ice const &other);
-

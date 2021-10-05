@@ -1,37 +1,40 @@
 #include "MateriaSource.hpp"
 
 MateriaSource::MateriaSource() {
-	localStorage = new AMateria*[4];
-	for (int i = 0; i < 4; ++i) {
-		localStorage[i] = nullptr;
-	}
+    for (std::size_t i = 0; i < 4; i++)
+        this->container[i] = NULL;
 }
 
-MateriaSource::~MateriaSource() {
-	delete[] localStorage;
+MateriaSource::~MateriaSource() {}
+
+MateriaSource::MateriaSource(const MateriaSource &other) {
+	*this = other;
 }
 
-void MateriaSource::learnMateria(AMateria *m) {
-	for (int i = 0; i < 4; ++i) {
-		if (localStorage[i] == nullptr) {
-			localStorage[i] = m;
-			return;
-		}
-	}
+MateriaSource &MateriaSource::operator=(const MateriaSource &other) {
+	if (this == &other)
+        return (*this);
+    for (std::size_t i = 0; i < 4; i++)
+    	this->container[i] = other.container[i];
+    return *this;
 }
 
-AMateria *MateriaSource::createMateria(const string &type) {
-	for (int i = 0; i < 4; ++i) {
-		if (localStorage[i] != nullptr) {
-			if (localStorage[i]->getType() == type) {
-				return localStorage[i];
+void MateriaSource::learnMateria(AMateria* materia) {
+    for (std::size_t i = 0; i < 4; i++) {
+    	if (!this->container[i]) {
+    		this->container[i] = materia;
+            return;
+        }
+    }
+}
+
+AMateria *MateriaSource::createMateria(const std::string &type) {
+	if (type == "ice" || type == "cure") {
+		for (std::size_t i = 0; i < 4; i++) {
+			if (this->container[i] && this->container[i]->getType() == type) {
+				return (this->container[i]->clone());
 			}
 		}
 	}
 	return nullptr;
-}
-
-MateriaSource &MateriaSource::operator=(MateriaSource const &other) {
-	localStorage = other.localStorage;
-	return (*this);
 }

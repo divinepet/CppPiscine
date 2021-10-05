@@ -2,12 +2,10 @@
 
 Cat::Cat() {
 	type = "Cat";
-	brain = new Brain();
 	cout << type + " was initialized" << endl;
 }
 
 Cat::~Cat() {
-	delete brain;
 	cout << type + " was destroyed" << endl;
 }
 
@@ -21,21 +19,16 @@ void Cat::makeSound() const {
 
 Cat::Cat(const Cat &cat) {
 	cout << "Not basic cat's copy constructor called" << endl;
-	if (cat.brain)
-		brain = new Brain();
-	else
-		brain = nullptr;
+	brain = new Brain();
+	brain = cat.brain;
 }
 
 Cat& Cat::operator= (const Cat &cat) {
 	cout << "Not basic cat's assign operator overload called" << endl;
 	if (this == &cat)
 		return *this;
-	delete brain;
-	if (cat.brain)
-		brain = new Brain();
-	else
-		brain = nullptr;
+	brain = new Brain();
+	brain = cat.brain;
 	return *this;
 }
 

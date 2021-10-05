@@ -1,11 +1,12 @@
 #include "Ice.hpp"
 #include "Cure.hpp"
 #include "Character.hpp"
-const string CYAN = "\x1B[3;96m\t\t";
-const string RESET = "\033[0m";
+#include "MateriaSource.hpp"
+const std::string CYAN = "\x1B[3;96m\t\t";
+const std::string RESET = "\033[0m";
 
 int main() {
-	cout << CYAN + "SUBJECT TESTS" + RESET << endl;
+	std::cout << CYAN + "SUBJECT TESTS" + RESET << std::endl;
 	IMateriaSource* src = new MateriaSource();
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
@@ -18,10 +19,10 @@ int main() {
 	ICharacter* bob = new Character("bob");
 	me->use(0, *bob);
 	me->use(1, *bob);
-	cout << CYAN + "OWN TESTS" + RESET << endl;
+	std::cout << CYAN + "OWN TESTS" + RESET << std::endl;
 	AMateria* m = tmp->clone();
-	cout << tmp->getType() << endl;
-	cout << m->getType() << endl;
+	std::cout << tmp->getType() << std::endl;
+	std::cout << m->getType() << std::endl;
 	bob->unequip(0);
 	bob->use(0, *me);
 	delete m;
