@@ -9,7 +9,7 @@ using std::cout;
 class WrongCat : public WrongAnimal {
 public:
 	WrongCat();
-	virtual ~WrongCat();
-	virtual void makeSound() const;
+	~WrongCat();
+	void makeSound() const;
 };
 

@@ -21,8 +21,8 @@ void Cat::makeSound() const {
 
 Cat::Cat(const Cat &cat) {
     cout << "Not basic cat's copy constructor called" << endl;
-    brain = new Brain();
-    brain = cat.brain;
+    this->type = cat.type;
+    brain = new Brain(*cat.brain);
 }
 
 Cat& Cat::operator= (const Cat &cat) {

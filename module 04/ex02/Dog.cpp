@@ -21,16 +21,17 @@ void Dog::makeSound() const {
 
 Dog::Dog(const Dog &dog) {
     cout << "Not basic dog's copy constructor called" << endl;
-    brain = new Brain();
-    brain = dog.brain;
+    this->type = dog.type;
+    this->brain = new Brain(*dog.brain);
 }
 
 Dog& Dog::operator= (const Dog &dog) {
     cout << "Not basic dog's assign operator overload called" << endl;
     if (this == &dog)
         return *this;
-    brain = new Brain();
-    brain = dog.brain;
+    delete brain;
+    type = dog.type;
+    brain = new Brain(*dog.brain);
     return *this;
 }
 

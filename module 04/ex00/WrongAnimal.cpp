@@ -9,6 +9,4 @@ WrongAnimal::~WrongAnimal() {
 	cout << "Parent class was destroyed" << endl;
 }
 
-void WrongAnimal::makeSound() const {
-	cout << "Animal make sound..." << endl;
-}
+void WrongAnimal::makeSound() const {}

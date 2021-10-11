@@ -9,9 +9,7 @@ Brain::~Brain() {
 }
 
 Brain::Brain(Brain const &brain) {
-    for (size_t i = 0; i < ideas->size(); i++) {
-        ideas[i] = brain.ideas[i];
-    }
+	*this = brain;
 }
 
 Brain& Brain::operator= (const Brain &brain) {

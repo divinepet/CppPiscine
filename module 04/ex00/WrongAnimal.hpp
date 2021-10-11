@@ -12,7 +12,7 @@ protected:
 	string type;
 public:
 	WrongAnimal();
-	virtual ~WrongAnimal();
-	virtual void makeSound() const;
+	~WrongAnimal();
+	void makeSound() const;
 };
 
