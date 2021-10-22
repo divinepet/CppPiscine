@@ -19,7 +19,7 @@ int main() {
 		bureaucrat.executeForm(*form);
 	} catch (std::exception &exception) {
 		cout << exception.what() << endl;
-	}
+	} 
 
 	delete form;
 	return 0;

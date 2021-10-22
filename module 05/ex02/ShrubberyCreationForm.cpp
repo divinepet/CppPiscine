@@ -11,10 +11,6 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &obj) :
 	this->target = obj.target;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &obj) : Form(obj) {
-	this->target = obj.target;
-}
-
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
 	Form::execute(executor);
 	std::ofstream file;

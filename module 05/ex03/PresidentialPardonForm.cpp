@@ -4,7 +4,6 @@ PresidentialPardonForm::PresidentialPardonForm() {}
 
 PresidentialPardonForm::~PresidentialPardonForm() {}
 
-
 PresidentialPardonForm::PresidentialPardonForm(const string &target)
 : Form("PresidentialPardonForm", 25, 5), target(target) {}
 
