@@ -4,7 +4,10 @@
 
 Base* generate() {
 	Base *inventory[] = {new A(), new B(), new C()};
-	return inventory[rand() % 3];
+	int index = rand() % 3;
+	for (int i = 0; i < 3; i++)
+		if (i != index) delete inventory[i];
+	return inventory[index];
 }
 
 void identify(Base* p) {
@@ -22,5 +25,6 @@ int main() {
 	Base *b = generate();
 	identify(b);
 	identify(*b);
+	while (true) {}
 	return 0;
 }
