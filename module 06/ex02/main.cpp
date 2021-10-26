@@ -25,6 +25,5 @@ int main() {
 	Base *b = generate();
 	identify(b);
 	identify(*b);
-	while (true) {}
 	return 0;
 }
